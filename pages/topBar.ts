@@ -5,10 +5,7 @@
  *
  * @param {string} login
  */
-function getProfileMenu(login) {
+export function getProfileMenu(login) {
     return `//span[text()="${login}"]`;
 }
 
-module.exports = {
-    getProfileMenu,
-};

@@ -1,4 +1,5 @@
-import {getProfileMenu} from "./topBar";
+import { getProfileMenu } from "./topBar";
+import { loader } from './loader';
 
 const { I } = inject();
 
@@ -8,23 +9,21 @@ const { I } = inject();
  * @param {string} login
  * @param {string} password
  */
-function login(login, password) {
+export function login(login, password) {
     I.amOnPage ('https://portal.servers.com/');
     I.click('Allow all');
     I.fillField('input[name="email"]', login);
     I.fillField('input[name="password"]', password);
     I.click('button[type=submit]');
+    loader();
 }
 
 /**
  * Logout
+ *
+ * @param {string} login
  */
-function logout(login) {
+export function logout(login) {
     I.click(getProfileMenu(login));
     I.click ('Logout');
 }
-
-module.exports = {
-    login,
-    logout,
-};
